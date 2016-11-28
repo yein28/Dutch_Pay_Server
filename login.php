@@ -1,5 +1,5 @@
 <?php
-	$con=mysqli_connect("localhost", "root", "1q2w3e4r", "mobile");
+	include("dbconfig.php");
 	mysqli_set_charset($con, "utf8");
 
 	if( !$con )
@@ -10,16 +10,20 @@
 	
 	$query="SELECT * FROM member WHERE id='$id'";
 	
-	$result=$mysqli_query($con,$query);
-	$row=mysqli_fetch_array($result);
-	$num_row=$result->num_rows;
+	$result=mysqli_query($con,$query);
+	$num_row=mysqli_num_rows($result);
 	
-	echo $num_row;
-#	if( $num_row=1 ){
-#		echo "ok";
-#	}else{
-#		echo "존재하지 않는 id입니다";
-#	}
+	if( $num_row==0 ){
+		echo "not exists";
+	}else{
+		$query2="SELECT pwd FROM member WHERE id='$id'";
+		$result2=mysqli_query($con, $query);
+		$row=mysqli_fetch_array($result2);
+		if( $row[0]==$pwd )
+			echo "success";
+		else
+			echo "fail";
+	}
 	
 	mysqli_close($con);
 ?>
