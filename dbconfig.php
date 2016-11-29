@@ -1,3 +1,3 @@
 <?php
-	$con=mysqli_connect("localhost", "root", "1q2w3e4r", "mobile");
+	$con=mysqli_connect("127.0.0.1", "root", "1q2w3e4r", "mobile");
 ?>
