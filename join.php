@@ -1,4 +1,5 @@
 <?php
+	# password validate check rutine demand
 	include("dbconfig.php");
 	mysqli_set_charset($con, "utf8");
 
@@ -14,15 +15,11 @@
 	$num_row=mysqli_num_rows($result);
 	
 	if( $num_row==0 ){
-		echo "not exists";
+		$query2="insert into member(id,pwd) values('$id', '$pwd')";
+		mysqli_query($con,$query2);
+		echo "success";
 	}else{
-		$query2="SELECT pwd FROM member WHERE id='$id'";
-		$result2=mysqli_query($con, $query);
-		$row=mysqli_fetch_array($result2);
-		if( $row[2]==$pwd )
-			echo "success";
-		else
-			echo "fail";
+		echo "already exists";	
 	}
 	
 	mysqli_close($con);
