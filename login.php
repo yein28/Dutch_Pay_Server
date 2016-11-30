@@ -16,13 +16,14 @@
 	if( $num_row==0 ){
 		echo "not exists";
 	}else{
-		$query2="SELECT pwd FROM member WHERE id='$id'";
+		$query2="SELECT pwd,rate FROM member WHERE id='$id'";
 		$result2=mysqli_query($con, $query);
 		$row=mysqli_fetch_array($result2);
-		if( $row[2]==$pwd )
-			echo "success";
-		else
+		if( $row[2]==$pwd ){
+			echo "success/".$row[3];
+		}else{
 			echo "fail";
+		}
 	}
 	
 	mysqli_close($con);
