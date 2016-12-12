@@ -1,14 +1,23 @@
 <?php
-	// login
 	include("dbconfig.php");
 	mysqli_set_charset($con, "utf8");
 
 	if( !$con )
 		echo "Failed to connect DB";
 	
-	$id=$_POST['id'];
-	$pwd=$_POST['pwd'];
+	$type=$_POST['type'];
+	$id =$_POST['id'];
 	
+	if( $type = 'loan' ){
+
+	}
+	else if( $type = 'rent' ){
+
+	}
+	else{
+
+	}
+
 	$query="SELECT * FROM member WHERE id='$id'";
 	
 	$result=mysqli_query($con,$query);
