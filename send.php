@@ -1,13 +1,13 @@
 <?php 
 	function send_notification ($tokens, $message)
 	{
-		$url = "https://fcm.googleapis.com/fcm/send";
+		$url = 'https://fcm.googleapis.com/fcm/send';
 		$fields = array (
 			'registration_ids' => $tokens,
 			'data' => $message
 			);
 		$headers = array (
-			'Authorization:key =' .GOOGLE_API_KEY,
+			'Authorization:key =' . GOOGLE_API_KEY,
 			'Content-Type: application/json'
 			);
 
@@ -22,7 +22,7 @@
 
 		$result = curl_exec($ch);
 
-		if ($result == FALSE){
+		if ($result === FALSE){
 			die('Curl failed: '. curl_error($ch));
 		}
 
@@ -33,7 +33,8 @@
 	include("dbconfig.php");
 	mysqli_set_charset($con, "utf8");
 
-	$sql = "Select Token from user";
+	$id = $_POST['id'];
+	$sql = "Select Token from user where userID = '$id';";
 
 	$result = mysqli_query($con, $sql);
 	$tokens = array();
@@ -48,7 +49,7 @@
 	$myMessage = $_POST["message"];
 
 	if($myMessage == "") {
-		$myMessage = "새글이 등록되었습니다.";	
+		$myMessage = "'빌린 돈'을 확인해보세요!";	
 	}
 
 	$message = array("message" => $myMessage);

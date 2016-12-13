@@ -12,16 +12,14 @@
 	$query="SELECT * FROM member WHERE id='$id'";
 	
 	$result=mysqli_query($con,$query);
+	$row=mysqli_fetch_array($result);
 	$num_row=mysqli_num_rows($result);
 	
 	if( $num_row==0 ){
 		echo "not exists";
 	}else{
-		$query2="SELECT pwd,rate FROM member WHERE id='$id'";
-		$result2=mysqli_query($con, $query);
-		$row=mysqli_fetch_array($result2);
 		if( $row[2]==$pwd ){
-			echo "success/".$row[3];
+			echo "success";
 		}else{
 			echo "fail";
 		}
