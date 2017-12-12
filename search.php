@@ -7,15 +7,17 @@
 	
 	$id=$_POST['id'];
 	
-	$query="SELECT * FROM member WHERE id='$id'";
-	
+	$query="SELECT rate FROM member WHERE id='$id'";
+
 	$result=mysqli_query($con,$query);
 	$num_row=mysqli_num_rows($result);
+
 	
 	if( $num_row==0 ){
 		echo "fail";
 	}else{
-		echo "success";	
+		$rate = mysqli_fetch_array($result);
+		echo $rate[0];	
 	}
 	
 	mysqli_close($con);

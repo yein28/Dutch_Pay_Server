@@ -33,9 +33,8 @@
 	include("dbconfig.php");
 	mysqli_set_charset($con, "utf8");
 
-	$id = $_POST['id'];
-	$query="update member set rate=rate-0.5 where id='$id';";
-	mysqli_query($con,$query);
+	$id = $_POST['receivedid'];
+	$pushid = $_POST['pushid'];
 
 	$sql = "select token from member where id='$id';";
 	$result = mysqli_query($con, $sql);
@@ -48,7 +47,7 @@
 	}
 	mysqli_close($con);
 
-	$myMessage = "'빌린 돈'을 확인해보세요!";		
+	$myMessage = "' $pushid '이 돈을 갚았습니다.!";		
 
 	$message = array("message" => $myMessage);
 	$message_status = send_notification($tokens,  $message);
