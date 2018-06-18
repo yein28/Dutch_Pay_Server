@@ -5,7 +5,7 @@
 	if( !$con )
 	echo "Failed to connect DB";
 
-	$id=$_POST['id'];
+	$id=$_POST['var'];
 
 	$query="SELECT rate FROM member WHERE id='$id'";
 	$res=mysqli_query($con,$query) or die("fail");
@@ -18,7 +18,7 @@
 	if( is_null($row2[0]))
 		$row2[0]=0;
 
-	$query3="SELECT SUM(money) FROM book where rent='$id'";
+	$query3="SELECT SUM(money) FROM book where debt='$id'";
 	$res3=mysqli_query($con,$query3) or die("fail");
 	$row3=mysqli_fetch_array($res3);
 

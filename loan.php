@@ -5,10 +5,9 @@
 	if( !$con )
 		echo "Failed to connect DB";
 	
-	$id =$_POST['id'];
+	$id =$_POST['var'];
 
 	$query="SELECT * FROM book WHERE loan='$id'";
-//	$query="SELECT * FROM book WHERE loan='ellen28'";
 	
 	$result=mysqli_query($con,$query);
 	$num_row=mysqli_num_rows($result);

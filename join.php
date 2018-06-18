@@ -8,7 +8,7 @@
 	
 	$id=$_POST['id'];
 	$pwd=$_POST['pwd'];
-	$token=$_POST['token'];
+#	$token=$_POST['token'];
 	
 	$query="SELECT * FROM member WHERE id='$id'";
 	
@@ -16,11 +16,11 @@
 	$num_row=mysqli_num_rows($result);
 	
 	if( $num_row==0 ){
-		$query2="INSERT INTO member(id,pwd,token) Values('$id', '$pwd','$token')";
+		$query2="INSERT INTO member(id,pwd) Values('$id', '$pwd')";
 		mysqli_query($con,$query2);
 		echo "success";
 	}else{
-		echo "already exists";	
+		echo "fail";	
 	}
 	
 	mysqli_close($con);

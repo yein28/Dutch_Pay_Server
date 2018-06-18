@@ -1,5 +1,4 @@
 <?php
-	// login
 	include("dbconfig.php");
 	mysqli_set_charset($con, "utf8");
 

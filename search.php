@@ -5,7 +5,7 @@
 	if( !$con )
 		echo "Failed to connect DB";
 	
-	$id=$_POST['id'];
+	$id=$_POST['var'];
 	
 	$query="SELECT rate FROM member WHERE id='$id'";
 
